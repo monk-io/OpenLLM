@@ -25,10 +25,6 @@ example:
       value: gemma3:1b
       env: OPENLLM_MODEL
       description: Model name reported by the example and used if runtime-mode is changed to serve.
-    data-volume-name:
-      type: string
-      value: openllm-example
-      description: Monk volume subdirectory used by the component example.
     host-port:
       type: int
       value: 30180

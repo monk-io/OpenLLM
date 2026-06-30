@@ -25,10 +25,6 @@ stack-web:
       value: qwen2.5-coder:3b
       env: OPENLLM_MODEL
       description: Public OpenLLM catalog model intended for GPU-backed serve mode.
-    data-volume-name:
-      type: string
-      value: openllm-stack
-      description: Monk volume subdirectory used by the production stack runtime.
 
   services:
     http:
@@ -71,10 +67,6 @@ stack-local-web:
       value: qwen2.5-coder:3b
       env: OPENLLM_MODEL
       description: Public OpenLLM catalog model intended for GPU-backed serve mode and reported by smoke mode.
-    data-volume-name:
-      type: string
-      value: openllm-stack-local
-      description: Monk volume subdirectory used by the local stack flavor.
     host-port:
       type: int
       value: 30181
