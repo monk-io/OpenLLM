@@ -35,5 +35,6 @@ example:
       container: server
       port: <- $port
       protocol: tcp
+      publish: true
       host-port: <- $host-port
       description: Published local HTTP service for component verification.
