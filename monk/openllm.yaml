@@ -82,18 +82,19 @@ base:
       value: /var/lib/openllm/pip-cache
       env: PIP_CACHE_DIR
       description: Container path for pip cache to speed restarts when the runtime volume is retained.
-    data-volume-name:
-      type: string
-      value: openllm-base
-      description: Monk volume subdirectory used for OpenLLM runtime data and caches.
+
+  volumes:
+    openllm-data:
+      kind: local
 
   containers:
     server:
       image: <- $image
       image-tag: <- $image-tag
       restart: unless-stopped
-      paths:
-        - <- `${volume-path}/${data-volume-name}:/var/lib/openllm`
+      mounted-volumes:
+        openllm-data:
+          path: /var/lib/openllm
       entrypoint: |
         /bin/sh -lc 'set -eu
         python -m pip install --no-cache-dir "$SETUPTOOLS_SPEC" "openllm==$OPENLLM_VERSION"
